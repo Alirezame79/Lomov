@@ -1,0 +1,52 @@
+.back {
+  background-color: #888888aa;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.front {
+  background-color: #fbffb1ee;
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  left: 20%;
+  right: 20%;
+  padding: 20px;
+
+  border-radius: 50px;
+  border: 3px #fbffb110 solid;
+}
+
+.imageContainer {
+  width: 30%;
+  height: 250px;
+  background-color: #ddd;
+  border-radius: 10px;
+}
+
+.header {
+  display: flex;
+  gap: 20px;
+}
+
+.txtHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.listView {
+  margin: 5px 5px 5px 25px;
+}
+
+.horizontalList {
+  display: inline;
+}
+
+.stars {
+  margin: 15px;
+}
