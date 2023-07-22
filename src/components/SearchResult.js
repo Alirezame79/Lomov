@@ -1,11 +1,9 @@
 import classes from './SearchResult.module.css';
-import { useSelector, UseSelector } from 'react-redux';
-import SearchResultCard from '../ui/SearchResultCard';
+import { useSelector } from 'react-redux';
+import SearchResultCard from './SearchResultCard';
 
 export default function SearchResult() {
-
     const searchResultList = useSelector((state) => {
-        // console.log(state.result)
         return state.result;
     })
 
@@ -14,10 +12,9 @@ export default function SearchResult() {
             {
                 <div>
                     {searchResultList.map((item) => {
-                        return <SearchResultCard movie={item} />
+                        return <SearchResultCard key={item.title + item.year} movie={item} />
                     })}
                 </div>
-                // || <h3 className={classes.txt}>Search Result Here...</h3>
             }
         </div>
     );

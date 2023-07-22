@@ -1,62 +1,54 @@
-import React, { useState } from 'react';
-import SearchByTitle from '../fetch/SearchByTitle';
-import SearchResult from './SearchResult';
+import React, { useRef, useState } from 'react';
 import classes from './SearchMovie.module.css';
-
+import { headers } from '../privateData/private';
 import { useDispatch } from 'react-redux';
-import { updateList } from '../store/index'
+import { updateList, resetList } from '../store/index'
 
 export default function SearchMovie() {
-    const [list, setList] = useState([]);
+    const [loading, setLoading] = useState(false);
     const dispatch = useDispatch();
+    const movieName = useRef('');
 
     function handleChange(e) {
-        const title = e.target.value.replaceAll(" ", "%20");
+        const action = resetList();
+        dispatch(action);
+    }
+
+    async function serachMovie() {
+        const title = movieName.current.value.replaceAll(" ", "%20");
         if (title === "") {
-            setList([]);
             return;
         }
-        const url = 'https://movies-tv-shows-database.p.rapidapi.com/?title=' + title;
+
+        const url = 'https://streaming-availability.p.rapidapi.com/v2/search/title?title='
+            + title + '&country=us&show_type=movie&output_language=en';
         const options = {
             method: 'GET',
-            headers: {
-                Type: 'get-movies-by-title',
-                'X-RapidAPI-Key': '86daca9d1fmshb2eeb57f7e677d9p182f67jsncf9d222a6dd5',
-                'X-RapidAPI-Host': 'movies-tv-shows-database.p.rapidapi.com'
-            }
+            headers: headers
         };
 
         try {
-            fetch(url, options).then((response) => {
+            setLoading(true);
+            await fetch(url, options).then((response) => {
                 return response.json();
             }).then((data) => {
-                const action = updateList(data.movie_results);
+                console.log(data.result);
+                setLoading(false);
+                const action = updateList(data.result);
                 dispatch(action);
-                // console.log(data.movie_results);
-                // console.log(data);
-                // let myList = [];
-                // for (let i = 0; i < data.search_results; i++) {
-                //     myList.push(data.movie_results[i]);
-                // }
-                // setList(myList);
             })
         } catch (error) {
-            console.error(error);
+            setLoading(false);
+            return;
         }
-        // setList(result);
     }
 
 
     return (
         <div className={classes.container}>
-            <input className={classes.searchInput} placeholder='Name' onChange={handleChange} />
-            {/* <ul> */}
-            {/* {list.map((item) => {
-                    return <li key={item.imdb_id}>{item.title} {item.year}</li>
-                })} */}
-            {/* {list[0]} */}
-            {/* </ul> */}
-
+            <input className={classes.searchInput} ref={movieName} placeholder='Name' onChange={handleChange} />
+            <button className={classes.searchBtn} onClick={serachMovie}>Search</button>
+            <h6 className={classes.loading}>{loading && 'Loading...'}</h6>
         </div>
     );
 }

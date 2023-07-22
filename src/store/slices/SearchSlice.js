@@ -5,12 +5,14 @@ const searchResult = createSlice({
     initialState: [],
     reducers: {
         updateList(state, action) {
-            // console.log(action.payload);
             return action.payload;
+        },
+        resetList(state, action) {
+            return [];
         },
     }
 })
 
 
 export { searchResult };
-export const { updateList } = searchResult.actions;
+export const { updateList, resetList } = searchResult.actions;

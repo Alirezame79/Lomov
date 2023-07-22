@@ -1,70 +1,87 @@
-# Getting Started with Create React App
+# Lomov - Love the Movies
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### This app is writen by React js.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+_First I need to appreciate `Streaming Availability` by `Movie of the Night` for preparing the free server, So i could use their huge database of movies._
 
-### `npm start`
+&nbsp;
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### I Love movies and nobody can Stop me from being such a psycho :)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### So it was the time to show my love by making this fantastic app. It provides you a huge resource of movies to search in and collect lots of data about it.
 
-### `npm test`
+&nbsp;
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+##### Let's analyze the app and get more data about it.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Store
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### This app use `Redux` for managing states. we use it for three purpose:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Search result: When we click the Button to search the we have been entered, the result will come back in array mode. App first saves the array in `Redux` and then assign it to `SearchResult` file. **This part will be managed by `SearchSlice` file.**
+- Selected movie: When the result has been shown and you click the card, which contain the movie you want, App save the selected movie in `Redux` as an object and use it anytime you want. **`MovieSlice` will manage it.**
+- Show selected movie: The final one is so easy and simple. we just manage the visibility of our modal by this. It's boolean and **managed by `MovieDetailSlice` file.**
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## UI
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### This app has a very simple ui. It made by two main part in first page. the first part contain an Input and a Button to search the movie, you have entered in Input part. When you enter the name and click the Button, the result will be shown in the below part. The Above part is `SearchMovie` and below part is `SearchResult`. each result movie will be shown in `SearchResultCard` file.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+![image](images/image1.jpg)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+&nbsp;
 
-## Learn More
+#### When you click one of the cards, the chosen movie will be shown in new view. The app shows the movie in a modal. It contains the below data of a movie:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Name
+- Year
+- Tagline
+- Genres
+- Directors
+- Stars
+- Runtime
+- Overview
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![image](images/image2.jpg)
 
-### Code Splitting
+**Desktop and mobile views are different.**
+&nbsp;
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## How to run:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+&nbsp;
 
-### Making a Progressive Web App
+### 1. First enter the main folder:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```
+cd todolist
+```
 
-### Advanced Configuration
+&nbsp;
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### 2. Then install `node modules` folder:
 
-### Deployment
+```
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+&nbsp;
 
-### `npm run build` fails to minify
+### 3. Finally run the app by this command:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+npm start
+```
+
+&nbsp;
+
+---
+
+**_I Will be So happy if you give me feedback by this project :)_**

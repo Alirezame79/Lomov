@@ -1,8 +1,15 @@
 import Modal from "./Modal";
+import { useSelector } from "react-redux";
 
 export default function ShowModal({ movie }) {
 
+    const modal = useSelector((state) => {
+        return state.modal;
+    })
+
     return (
-        <Modal movie={movie} />
+        <>
+            {modal && <Modal movie={movie} />}
+        </>
     )
 }
