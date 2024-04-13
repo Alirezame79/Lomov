@@ -1,14 +1,14 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
-const selectedMovie = createSlice({
-    name: "movie",
-    initialState: {},
-    reducers: {
-        setMovie(state, action) {
-            return action.payload;
-        }
-    }
-})
+const movieSlice = createSlice({
+  name: "movie",
+  initialState: {},
+  reducers: {
+    setMovie(state, action) {
+      return action.payload;
+    },
+  },
+});
 
-export { selectedMovie };
-export const { setMovie } = selectedMovie.actions;
+export { movieSlice };
+export const { setMovie } = movieSlice.actions;
