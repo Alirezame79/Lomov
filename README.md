@@ -7,6 +7,7 @@ An amazing source of movies and series.
 this app is make by:
 
 - React
+- Redux
 - fetch
 - Portal
 
